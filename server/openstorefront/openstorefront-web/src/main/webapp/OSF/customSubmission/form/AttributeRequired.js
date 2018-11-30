@@ -54,7 +54,7 @@ Ext.define('OSF.customSubmission.form.AttributeRequired', {
 						xtype: 'AttributeCodeSelect',
 						attributeType: attributeType.attributeType,
 						attributeTypeView: attributeType
-					});										
+					});
 					
 				});
 				formPanel.add(fields);
@@ -63,7 +63,7 @@ Ext.define('OSF.customSubmission.form.AttributeRequired', {
 				
 				var initialData = formPanel.section.submissionForm.getFieldData(formPanel.fieldTemplate.fieldId);
 				if (initialData) {
-					var data = Ext.decode(initialData);				
+					var data = Ext.decode(initialData);
 					
 					//data from the initial load is not in the expected form					
 					Ext.Array.each(data, function(item) {
@@ -97,20 +97,18 @@ Ext.define('OSF.customSubmission.form.AttributeRequired', {
 						
 					});
 					
-					
-				}	
+				}
 				
 			}
 		});
-		
-		
 	},
+
 	reviewDisplayValue: function() {
 		var attributePanel = this;
 		
 		var template = new Ext.XTemplate(
-			'<table class="submission-review-table">' + 
-			'<tbody>' + 
+			'<table class="submission-review-table">' +
+			'<tbody>' +
 			'	<tpl for=".">'+
 			'		<tr class="submission-review-row">' +
 			'			<td class="submission-review-label">'+
@@ -118,7 +116,7 @@ Ext.define('OSF.customSubmission.form.AttributeRequired', {
 			'			</td>' +
 			'			<td class="submission-review-data" style="min-width: 150px">' +
 			'				{value}' +
-			'			</td>' +			
+			'			</td>' +
 			'		</tr>' +
 			'	</tpl>'+
 			'</tbody>' +
@@ -136,14 +134,15 @@ Ext.define('OSF.customSubmission.form.AttributeRequired', {
 		
 		return template.apply(data);
 	},
+
 	getSubmissionValue: function() {
 		var attributePanel = this;
 
 		var data = [];
 		Ext.Array.each(attributePanel.items.items, function(field) {
 			
-			var allValues = field.getValue();			
-			Ext.Array.each(allValues, function(value){				
+			var allValues = field.getValue();
+			Ext.Array.each(allValues, function(value){
 				data.push({
 					componentAttributePk: {
 						attributeType: field.attributeTypeView.attributeType,
@@ -153,11 +152,16 @@ Ext.define('OSF.customSubmission.form.AttributeRequired', {
 			});
 		});
 		
-		var userSubmissionField = {			
+		var userSubmissionField = {
 			templateFieldId: attributePanel.fieldTemplate.fieldId,
 			rawValue: Ext.encode(data)
-		};		
-		return userSubmissionField;			
+		};
+		return userSubmissionField;
+	},
+	
+	checkIsHidden: function() {
+		var attributePanel = this;
+		return attributePanel.isHidden();
 	}
 	
 });

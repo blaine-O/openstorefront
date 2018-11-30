@@ -300,6 +300,9 @@ Ext.define('OSF.customSubmission.Section', {
 				if (userData) {
 					data.push(field.getUserData());
 				}
+				if (field.xtype === "osf-submissionform-formwrapper") {
+					field.checkHidden();
+				}
 			}
 		});
 		return data;
