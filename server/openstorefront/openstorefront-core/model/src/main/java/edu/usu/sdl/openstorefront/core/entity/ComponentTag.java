@@ -50,7 +50,6 @@ public class ComponentTag
 	@ConsumeField
 	@Size(min = 1, max = OpenStorefrontConstant.FIELD_SIZE_TAG)
 	@Sanitize(TextSanitizer.class)
-	@Unique(ComponentTagUniqueHandler.class)
 	private String text;
 
 	@SuppressWarnings({"squid:S2637", "squid:S1186"})
