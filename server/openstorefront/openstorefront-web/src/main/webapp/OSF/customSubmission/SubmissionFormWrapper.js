@@ -54,7 +54,7 @@ Ext.define('OSF.customSubmission.SubmissionFormWrapper', {
 	checkHidden: function() {
 		var submissionField = this;
 		var formComponent = submissionField.queryById('component')
-		if (formComponent.checkIsHidden ? formComponent.checkIsHidden() : 'N/A') {
+		if (formComponent.checkIsHidden && formComponent.checkIsHidden()) {
 			submissionField.setHidden(true);
 		}
 	},
